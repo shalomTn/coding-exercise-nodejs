@@ -1,0 +1,231 @@
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+        <meta name="viewport" content="width-=device-width, initial-scale=1.0"/>
+        <title>Calculator</title>
+    </head>
+    <script>
+        function cal(x){
+            let a = document.getElementById('number1').value;
+            document.getElementById("number1").innerHTML = a;
+            let b = document.getElementById('number2').value;
+            document.getElementById("number1").innerHTML = b;
+            if(isNaN(a) || isNaN(b)){
+                alert('please enter a number');
+                return;
+            }
+            let data={
+                a:a,
+                b:b,
+                s:x,
+            };
+            fetch('http://localhost:3000/cal',{ 
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Accept:"application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+                console.log("Ans", data.ans);
+                document.getElementById("result").value = data.ans;
+            });
+        }
+        function add(){
+            let a = document.getElementById('number1').value;
+            document.getElementById("number1").innerHTML = a;
+            let b = document.getElementById('number2').value;
+            document.getElementById("number1").innerHTML = b;
+            if(isNaN(a) || isNaN(b)){
+                alert('please enter a number');
+                return;
+            }
+            let data={
+                a:a,
+                b:b,
+            };
+            fetch('http://localhost:3000/add',{ 
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Accept:"application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+                console.log("Ans", data.ans);
+                document.getElementById("result").value = data.ans;
+            });
+        }
+        function sub(){
+            let a = document.getElementById('number1').value;
+            document.getElementById("number1").innerHTML = a;
+            let b = document.getElementById('number2').value;
+            document.getElementById("number1").innerHTML = b;
+            if(isNaN(a) || isNaN(b)){
+                alert('please enter a number');
+                return;
+            }
+            let data={
+                a:a,
+                b:b,
+            };
+            fetch('http://localhost:3000/sub',{ 
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Accept:"application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+                console.log("Ans", data.ans);
+                document.getElementById("result").value = data.ans;
+            });
+        }
+        function div(){
+            let a = document.getElementById('number1').value;
+            document.getElementById("number1").innerHTML = a;
+            let b = document.getElementById('number2').value;
+            document.getElementById("number1").innerHTML = b;
+            if(isNaN(a) || isNaN(b)){
+                alert('please enter a number');
+                return;
+            }
+            let data={
+                a:a,
+                b:b,
+            };
+            fetch('http://localhost:3000/div',{ 
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Accept:"application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+                console.log("Ans", data.ans);
+                document.getElementById("result").value = data.ans;
+            });
+        }
+        function mul(){
+            let a = document.getElementById('number1').value;
+            document.getElementById("number1").innerHTML = a;
+            let b = document.getElementById('number2').value;
+            document.getElementById("number1").innerHTML = b;
+            if(isNaN(a) || isNaN(b)){
+                alert('please enter a number');
+                return;
+            }
+            let data={
+                a:a,
+                b:b,
+            };
+            fetch('http://localhost:3000/mul',{ 
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                    Accept:"application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+                console.log("Ans", data.ans);
+                document.getElementById("result").value = data.ans;
+            });
+        }
+    </script>
+    <style>
+        body{
+            background: rgb(33, 25, 43);
+        }
+        .container{
+            color: rgb(74, 96, 74);
+            background-color: rgb(37, 29, 29);
+            margin: auto;
+            justify-content: center;
+            width: 40%;
+            padding: 50px;
+            border-radius:2px;
+            box-shadow: 4px 8px 15px 0 rgba(0,0,0,0.1);
+        }
+        button{
+            background-color:rgb(64, 82, 64);
+            color:white;
+            border: 2px solid rgb(31, 40, 31); /* Green border */
+            padding: 10px 24px; /* Some padding */
+        }
+        .btn-group button {
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+        }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+        }
+
+        .btn-group button:not(:last-child) {
+        border-right: none; /* Prevent double borders */
+        }
+        input[type=text]{
+            background-color: rgb(237, 225, 209);
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(149, 167, 153);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .labelStyle{
+            
+        }
+        h1{
+            color:rgb(78, 105, 83);
+        }
+    </style>
+    <body>
+        
+        <div class="container">
+            <div class="content">
+
+                    <h1> Calculator</h1>    
+                    <div class="input">
+                        <label class="labelStyle" for ='number1'>number 1:</label> 
+                    <input type="text" id="number1" name="number1"/><br/>
+                </div>
+                <div class="input">
+                    <label class="labelStyle" for ='number2'>number 2:</label> 
+                    <input type="text" id="number2" name="number2"/><br/>
+                </div>
+                <div class="input">
+                    <label class="labelStyle" for ='result'>result:</label> 
+                    <input type="text" id="result" name="result"/><br/>
+                </div>
+                
+                <div class="btn-group">
+
+                    <button class="buttonCal" onclick="add()">+</button>
+                    <button class="buttonCal" onclick="sub()">-</button>
+                    <button class="buttonCal" onclick="mul()">*</button>
+                    <button class="buttonCal" onclick="div()">/</button>
+                </div>
+                <div style="margin-left:80px">
+                    <button class="button" onclick="clearInput()">Clear</button>
+                </div>
+            </div>    
+        </div>
+    </body>
+</html>
